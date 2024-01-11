@@ -7,12 +7,13 @@
 // 接著將程式碼從 Github 上載入環境
 
 (in Git CMD)
+>cd 環境位置
 > git clone https://github.com/yPinn/yogart.git
 
 // 下載成功後，切換資料夾位置並安裝所需 Python 套件
 
 (in Anaconda Prompt)
-> cd yogart
+> cd 環境位置/yogart
 > pip install -r requirements.txt 
 
 // 安裝完成後，切換資料夾位置並執行程式
