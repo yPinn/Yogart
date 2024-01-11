@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="/img/favicon.png" type="image/x-icon" />
+
+    <!--=============== REMIXICONS ===============-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="/static/styles.css" />
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+
+    <title>Yogart</title>
+  </head>
+  <body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav__logo">Yogart</a>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item">
+              <a href="#home" class="nav__link">主頁</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#health" class="nav__link">學習</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#routine" class="nav__link">健康</a>
+            </li>
+
+            <li class="nav__item">
+              <a href="#follow" class="nav__link">社群</a>
+            </li>
+          </ul>
+
+          <!--Close button-->
+          <div class="nav__close" id="nav-close">
+            <i class="ri-close-line"></i>
+          </div>
+        </div>
+
+        <div class="nav__buttons">
+          <!--Theme change button-->
+          <i class="ri-moon-line change-theme" id="theme-button"></i>
+        </div>
+
+        <!--Toggle button-->
+        <div class="nav__toggle" id="nav-toggle">
+          <i class="ri-apps-2-line"></i>
+        </div>
+      </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+      <!--==================== HOME ====================-->
+      <section class="home section" id="home">
+        <div class="home__container container grid">
+          <div class="home__data">
+            <h1 class="home__title">
+              跟著
+              <div class="home__title-box">
+                <div>Yogart</div>
+              </div>
+              學習瑜珈
+
+              <img src='/static/img/star-img.svg' alt="home image" />
+            </h1>
+
+            <p class="home__description">
+              在瑜珈的旅程中，尋找身心靈的和諧，感受生命的流動。
+
+              <img src='/static/img/circle-img.svg' alt="home image" />
+            </p>
+
+            <div class="home__box">
+              <div>
+                <h3>10+</h3>
+                <span>動作練習</span>
+              </div>
+
+              <div>
+                <h3>5+</h3>
+                <span>瑜珈文章</span>
+              </div>
+            </div>
+          </div>
+
+          <img src='/static/img/home_pic.png' alt="home img" class="home__img" />
+
+        </div>
+      </section>
+
+      <!--==================== LIST ====================-->
+      <section class="list section">
+        <div class="list__content">
+            <div class="list__blob">
+                <img src="/static/img/1.png" alt="list image" onclick="showPopup('popup1', 'popupTitle1', 'popupSubtitle1', 'popupContent1')"/>
+            </div>
+    
+            <div class="list__blob">
+                <img src="/static/img/2.png" alt="list image" onclick="showPopup('popup2', 'popupTitle2', 'popupSubtitle2', 'popupContent2')"/>
+            </div>
+    
+            <div class="list__blob">
+                <img src="/static/img/3.png" alt="list image" onclick="showPopup('popup3', 'popupTitle3', 'popupSubtitle3', 'popupContent3')"/>
+            </div>
+    
+            <div class="list__blob">
+                <img src="/static/img/4.png" alt="list image" onclick="showPopup('popup4', 'popupTitle4', 'popupSubtitle4', 'popupContent4')"/>
+            </div>
+    
+            <div class="list__blob">
+                <img src="/static/img/5.png" alt="list image" onclick="showPopup('popup5', 'popupTitle5', 'popupSubtitle5', 'popupContent5')"/>
+            </div>
+    
+            <div class="list__blob">
+                <img src="/static/img/6.png" alt="list image" onclick="showPopup('popup6', 'popupTitle6', 'popupSubtitle6', 'popupContent6')"/>
+            </div>
+    
+            <div class="list__blob">
+                <img src="/static/img/7.png" alt="list image" onclick="showPopup('popup7', 'popupTitle7', 'popupSubtitle7', 'popupContent7')"/>
+            </div>
+    
+            <div class="list__blob">
+                <img src="/static/img/8.png" alt="list image" onclick="showPopup('popup8', 'popupTitle8', 'popupSubtitle8', 'popupContent8')"/>
+            </div>
+
+            <div class="popup" id="popup1">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup1')">&times;</span>
+                  <h1 id="popupTitle1">三角式</h1>
+                  <h4 id="popupSubtitle1">Triangle Pose</h4><br/>
+                  <p id="popupContent1">主要訓練部位：</p>
+                  <p id="popupContent1">腿部、腹部、背部、肩膀、脊椎</p><br/>
+                  <p id="popupContent1">01/ 將雙腿打開大於肩膀寬度，再將上半身轉向右邊。 <br/>
+                    02/ 將右手放在右邊小腿上，左手往上打直伸開，眼睛往左手指尖看。 </p>
+              </div>
+            </div>
+          
+            <div class="popup" id="popup2">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup2')">&times;</span>
+                  <h1 id="popupTitle2">下犬式</h1>
+                  <h4 id="popupSubtitle2">Downward Facing Dog Pose</h4><br/>
+                  <p id="popupContent2">主要訓練部位</p>
+                  <p id="popupContent2">手臂、肩膀、背部、大腿後部、小腿、足踝</p><br/>
+                  <p id="popupContent2">01/ 呈四足跪姿準備動作。​<br/>
+                    02/ 用手臂力量向後推，撐起身體，臀部向上頂高，形成V字型。雙腳與臀部同寬，腳後跟採地。​<br/>
+                    03/ 手掌緊貼瑜伽墊，張開10根手指，頸部放鬆，頭部自然下垂，胸部盡量朝腿部靠近，維持3-5個呼吸。 </p>
+              </div>
+            </div>
+
+            <div class="popup" id="popup3">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup3')">&times;</span>
+                  <h1 id="popupTitle3">眼鏡蛇式</h1>
+                  <h4 id="popupSubtitle3">Cobra Pose</h4><br/>
+                  <p id="popupContent3">主要訓練部位：</p>
+                  <p id="popupContent3">背部、脊椎、臀部、肩膀、腹部</p><br/>
+                  <p id="popupContent3">01/ 趴下，雙腳保持平行打開，注意不要外八。 <br/>
+                    02/ 額頭貼地做預備。 <br/>
+                    03/ 吸氣時將自己抬到如眼鏡蛇的角度，當腰椎有被拉緊的感覺，便停在那個角度，不要再加深。 <br/>
+                    04/ 肩膀保持向後打開，伸展喉嚨的前側但不要擠壓頸椎後方。 <br/>
+                    05/ 眼睛往下端看遠。 </p>
+              </div>
+            </div>
+
+            <div class="popup" id="popup4">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup4')">&times;</span>
+                  <h1 id="popupTitle4">側角伸展式</h1>
+                  <h4 id="popupSubtitle4">Extended Triangle Pose</h4><br/>
+                  <p id="popupContent4">主要訓練部位：</p>
+                  <p id="popupContent4">大腿、腿部、背部、肩膀、脊椎</p><br/>
+                  <p id="popupContent4">01/ 雙腳呈弓箭步姿勢，雙手平舉，視線保持向前做準備。​<br/>
+                    02/ 上身稍微向前傾，左手彎曲將手臂靠在左腳大腿上。​<br/>
+                    03/ 右手向上抬起，手臂朝向天花板伸直。 <br/>
+                    04/ 當手臂貼近耳朵時，稍微將胸口轉向天花板，保持這個動作3次呼吸的時間。 </p>
+              </div>
+            </div>
+
+            <div class="popup" id="popup5">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup5')">&times;</span>
+                  <h1 id="popupTitle5">頭倒立式</h1>
+                  <h4 id="popupSubtitle5">Headstand Pose</h4><br/>
+                  <p id="popupContent5">主要訓練部位：</p>
+                  <p id="popupContent5">頸部、肩膀、手臂、腹部、背部、平衡感</p>​<br/>
+                  <p id="popupContent5">01/ 雙手食指相勾，保持手背手腕很自然的在一個平面。手肘保持肩膀的寬度。 ​<br/>
+                    02/ 將頭頂放在手掌之間的地面，後腦勺貼在手掌的位置。 ​<br/>
+                    03/ 吸氣，提臀向上把雙腿拉起來，讓臀部帶著你的雙腳往頭的方向走。 ​<br/>
+                    04/ 呼氣的時候，收好腹部和雙腿肌肉，最好能讓雙腳同時離地，將雙腿向上伸展出去。 </p>
+              </div>
+            </div>
+
+            <div class="popup" id="popup6">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup6')">&times;</span>
+                  <h1 id="popupTitle6">戰士第一式</h1>
+                  <h4 id="popupSubtitle6">Warrior I Pose</h4><br/>
+                  <p id="popupContent6">主要訓練部位：</p>
+                  <p id="popupContent6">大腿、小腿、腹部、背部、肩膀、脊椎</p><br/>
+                  <p id="popupContent6">01/ 身體挺直，雙腳併攏做準備。 <br/>
+                    02/ 身體轉向左邊，左腳向前跨出一大步。 <br/>
+                    03/ 左腳彎曲呈功箭步，身體重心略微靠近前腿。 <br/>
+                    04/ 雙手向上舉，擴展胸部，伸展上半身肌肉。 </p>
+              </div>
+            </div>
+
+            <div class="popup" id="popup7">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup7')">&times;</span>
+                  <h1 id="popupTitle7">戰士第二式</h1>
+                  <h4 id="popupSubtitle7">Warrior II Pose</h4><br/>
+                  <p id="popupContent7">主要訓練部位：</p>
+                  <p id="popupContent7">大腿、小腿、髖部、腹部、背部、肩膀</p><br/>
+                  <p id="popupContent7">01/ 從下犬式開始，右腳先往前踏一大步，膝蓋彎曲呈 90 度。 <br/>
+                    02/ 左腳跟踩地，將腳趾頭 90 度往外轉。 <br/>
+                    03/ 吸氣時，起身轉正讓身體面向前方，並把雙手向外打開。 <br/>
+                    04/ 眼睛看向右手。 </p>
+              </div>
+            </div>
+
+            <div class="popup" id="popup8">
+              <div class="popup-content">
+                  <span class="close" onclick="closePopup('popup8')">&times;</span>
+                  <h1 id="popupTitle8">青蛙式</h1>
+                  <h4 id="popupSubtitle8">Frog Pose</h4><br/>
+                  <p id="popupContent8">主要訓練部位：</p>
+                  <p id="popupContent8">髖部、內外腿部、腹部、臀部、體核肌群</p><br/>
+                  <p id="popupContent8">01/ 從四足跪姿開始， 保持背部平行地面，將雙膝向外打開至極限。 <br/>
+                    02/ 將膝蓋彎曲使大腿與小腿成 90 度，腳趾往外勾也與小腿成 90 度。 <br/>
+                    03/ 手肘落地放於瑜珈墊上，拉長脊柱、讓軀幹朝向地面放鬆。 </p>
+              </div>
+            </div>
+        </div>
+    </section>
+    
+      <!--==================== HEALTH ====================-->
+      <section class="health section" id="health">
+        <div class="health__container container grid">
+
+          <div class="health__data">
+            <h2 class="section__title">動作教學</h2>
+
+            <br class="health__description">
+              點選想要做的動作，根據骨架顏色調整姿勢。</br>
+              綠色：正確，代表你已經學會了。</br>
+              紅色：錯誤，代表動作需要微調。</br>
+              <i class="ri-cursor-line"></i>
+            </p>
+
+            <button onclick="startPoseDetectionA()" class="button" onmouseover="showImage('/static/img/warrior_I_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">戰士第一式</button>
+            <button onclick="startPoseDetectionB()" class="button" onmouseover="showImage('/static/img/warrior_II_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">戰士第二式</button>
+            <button onclick="startPoseDetectionC()" class="button" onmouseover="showImage('/static/img/downward_facing_dog_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">下犬式</button>
+            <button onclick="startPoseDetectionD()" class="button" onmouseover="showImage('/static/img/chair_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">幻椅式</button>
+            <button onclick="startPoseDetectionE()" class="button" onmouseover="showImage('/static/img/mountain_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">山式</button>
+            <button onclick="startPoseDetectionF()" class="button" onmouseover="showImage('/static/img/tree_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">樹式</button>
+            <button onclick="startPoseDetectionG()" class="button" onmouseover="showImage('/static/img/triangle_pose.jpeg')" onmouseout="showImage('/static/img/first_pic.png')">三角式</button>
+            <button onclick="startPoseDetectionH()" class="button" onmouseover="showImage('/static/img/half_moon_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">半月式</button>
+            <button onclick="startPoseDetectionI()" class="button" onmouseover="showImage('/static/img/full_boat_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">完全船式</button>
+            <button onclick="startPoseDetectionJ()" class="button" onmouseover="showImage('/static/img/happy_baby_pose.jpg')" onmouseout="showImage('/static/img/first_pic.png')">快樂嬰兒式</button>
+            
+            <button onclick="startYolo()" class="button">yolo</button>
+          </div>
+
+          <div id="imageContainer">
+            <img id="displayedImage" src="/static/img/first_pic.png" alt="照片">
+          </div>
+          
+      </section>
+
+      <!--==================== ROUTINE ====================-->
+      <section class="routine section" id="routine">
+        <div class="routine__container container grid">
+          <div class="routine__data">
+            <h2 class="section__title">瑜珈相關文章</h2>
+
+            <br class="routine__description">
+              文章不定期更新</br>
+              透過閱讀文章，獲取最新資訊，並建構正確的瑜珈觀念。</br>
+              <i class="ri-cursor-line"></i>
+            </p>
+
+            <a href="https://www.commonhealth.com.tw/article/88096" target="_blank" class="button">
+              初級瑜珈動作<i class="ri-arrow-right-line"></i>
+            </a>
+            <a href="https://www.cosmopolitan.com/tw/beauty/fitness/g37084569/yogas/" target="_blank" class="button">
+              9大瑜珈派系<i class="ri-arrow-right-line"></i>
+            </a>
+            <a href="https://helloyogis.com/magazine/2023/03/30/advanced-asana/" target="_blank" class="button">
+              中級瑜珈動作<i class="ri-arrow-right-line"></i>
+            </a>
+            <a href="https://www.edh.tw/article/32227" target="_blank" class="button">
+              瑜珈9大好處<i class="ri-arrow-right-line"></i>
+            </a>
+            <a href="https://helloyogis.com/magazine/2023/07/15/difficult-asana/" target="_blank" class="button">
+              高級瑜珈動作<i class="ri-arrow-right-line"></i>
+            </a>
+            <a href="https://nuli.app/blog/yoga-benefit/" target="_blank" class="button">
+              瑜珈新手觀念<i class="ri-arrow-right-line"></i>
+            </a>
+          </div>
+
+          <div class="routine__images">
+            <img
+              src="/static/img/health-pic1.png"
+              alt="routine image"
+              class="routine__img-1"
+            />
+
+            <img
+              src="/static/img/health-pic2.png"
+              alt="routine image"
+              class="routine__img-2"
+            />
+
+            <div class="routine__box-1">
+              <i class="ri-article-line routine__icon"></i>
+              <span class="routine__title">瑜珈文章</span>
+            </div>
+
+            <div class="routine__box-2">
+              <i class="ri-mental-health-line routine__icon"></i>
+              <span class="routine__title">健康資訊</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!--==================== FOLLOW ====================-->
+      <section class="follow section" id="follow">
+        <div class="follow__container container grid">
+          <div class="follow__content-1">
+            <div class="follow__data">
+              <h2 class="section__title follow__title">
+                追蹤我們的 社群平台
+                <div>@yogart112</div>
+              </h2>
+
+              <a href="https://www.instagram.com/yogart112/" target="_blank" class="button follow__button">
+                Follow<i class="ri-arrow-right-line"></i>
+              </a>
+            </div>
+
+            <img
+              src="/static/img/follow-pic3.png"
+              alt="follow image"
+              class="follow__img-1"
+            />
+            <img
+              src="/static/img/follow-pic4.png"
+              alt="follow image"
+              class="follow__img-2"
+            />
+          </div>
+
+          <div class="follow__content-2">
+            <img
+              src="/static/img/follow-pic1.png"
+              alt="follow image"
+              class="follow__img-3"
+            />
+            <img
+              src="/static/img/follow-pic2.png"
+              alt="follow image"
+              class="follow__img-4"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!--==================== JOIN ====================-->
+
+      <section class="join section">
+        <div class="join__container container grid">
+          <div class="join__content">
+            <div>
+              <h2 class="join__title">接收最新資訊</h2>
+
+              <p class="join__description">
+                訂閱電子報，Yogart會定期寄送瑜珈相關活動消息給您。
+              </p>
+            </div>
+
+            <form class="join__form" onsubmit="subscribeEmail(event)">
+              <input
+                  type="email"
+                  id="emailInput"
+                  placeholder="請輸入您的電子信箱"
+                  class="join__input"
+              />
+          
+              <button type="submit" class="button join__button">
+                  Subscribe<i class="ri-arrow-right-line"></i>
+              </button>
+          </form>
+          <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+      <div class="footer__container container grid">
+        <div class="footer__content grid">
+          <div>
+            <a href="#" class="footer__logo">Yogart</a>
+
+            <p class="footer__description">
+              瑜珈， <br />
+              讓身心靈重新連結的魔法之旅。
+            </p>
+          </div>
+
+          <div class="footer__data grid">
+            <div>
+              <h3 class="footer__title">地址</h3>
+
+              <p class="footer__info">
+                台北市中正區 <br />
+                貴陽街一段56號
+              </p>
+            </div>
+
+            <div>
+              <h3 class="footer__title">聯絡我們</h3>
+
+              <p class="footer__info">
+                02-23111531 <br />
+                2023yoooga@gmail.com
+              </p>
+            </div>
+
+            <div>
+              <h3 class="footer__title">營業時間</h3>
+
+              <p class="footer__info">
+                星期一 ~ 星期五 <br />
+                8:00 - 17:30
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__group">
+          <ul class="footer__social">
+            <li>
+              <a
+                href="https://www.facebook.com/"
+                target="_blank"
+                class="footer__social-link"
+              >
+                <i class="ri-facebook-circle-line"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                class="footer__social-link"
+              >
+                <i class="ri-instagram-line"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://twitter.com/"
+                target="_blank"
+                class="footer__social-link"
+              >
+                <i class="ri-twitter-line"></i>
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="https://www.youtube.com/"
+                target="_blank"
+                class="footer__social-link"
+              >
+                <i class="ri-youtube-line"></i>
+              </a>
+            </li>
+          </ul>
+
+          <span class="footer__copy">
+            &#169; Copyright Yogart. All rights reserved
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <!--========== SCROLL UP ==========-->
+    <a href="#" class="scrollup" id="scroll-up">
+      <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="/static/scrollreveal.min.js"></script>
+
+    <!--=============== MAIN JS ===============-->
+    <script src="/static/main.js"></script>
+  </body>
+</html>
