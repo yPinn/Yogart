@@ -1,25 +1,31 @@
 // 利用 Anaconda 創建環境並啟動
+
 (in Anaconda Prompt)
 > conda create --name yoga python=3.9
 > activate yoga
 
 // 接著將程式碼從 Github 上載入環境
+
 (in Git CMD)
 > git clone https://github.com/yPinn/yogart.git
 
 // 下載成功後，切換資料夾位置並安裝所需 Python 套件
+
 (in Anaconda Prompt)
 > cd yogart
 > pip install -r requirements.txt 
 
 // 安裝完成後，切換資料夾位置並執行程式
+
 > cd web
 > python app.py
 
 // 在瀏覽器開啟以下網頁
 
-http://127.0.0.1:5000/
+> http://127.0.0.1:5000/
 
-按 'Q' 關閉鏡頭視窗
+// 注意事項：按鈕按一次就好(不然會跳很多視窗
 
-按 'Ctrl+C' 終止程式碼
+// 按 'Q' 關閉鏡頭視窗
+
+// 按 'Ctrl+C' 終止程式碼
