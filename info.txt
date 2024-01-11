@@ -1,7 +1,7 @@
 // 利用 Anaconda 創建環境並啟動
 
 (in Anaconda Prompt)
-> conda create --name yoga python=3.9
+> conda create -n yoga python=3.9
 > activate yoga
 
 // 接著將程式碼從 Github 上載入環境
