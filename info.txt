@@ -1,39 +1,31 @@
 // 利用 Anaconda 創建環境並啟動
-
 (in Anaconda Prompt)
-> conda create -n yoga python=3.9
-> activate yoga
+> conda create -n [環境] python=3.9
+> activate [環境]
+> cd [環境位址]
 
-// 接著將程式碼從 Github 上載入環境
-
+// 從 Github 上複製程式碼 
 (in Git CMD)
->cd 環境位置
+> cd [環境位址]
 > git clone https://github.com/yPinn/yogart.git
 
-// 下載成功後，切換資料夾位置並安裝所需 Python 套件
-
+// 安裝所需 Python 套件
 (in Anaconda Prompt)
-> cd 環境位置/yogart
-> pip install -r requirements.txt 
+> cd yogart
+> pip install -r requirements.txt
 
-// 安裝完成後，切換資料夾位置並執行程式
-
+// 執行網頁主程式
 > cd web
 > python app.py
 
-// 在瀏覽器開啟以下網頁
-
+// 在瀏覽器開啟網頁
 > http://127.0.0.1:5000/
 
 // 注意事項：按鈕按一次就好(不然會跳很多視窗
-
 // 按 'Q' 關閉鏡頭視窗
-
 // 按 'Ctrl+C' 終止程式碼
 
 // 模型訓練相關：
-
 > pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
-
 > import torch
 > torch.cuda.is_available()
