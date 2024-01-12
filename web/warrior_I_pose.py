@@ -1,27 +1,24 @@
-import math
 import cv2
+import math
 import mediapipe as mp
 from mediapipe.python.solutions import pose as mp_pose
-from threading import Thread, Lock
 
 mp_drawing = mp.solutions.drawing_utils
 
-detection_lock = Lock()
-detection_ongoing = False
-
 def calculateAngle(landmark1, landmark2, landmark3):
+
     x1, y1 = landmark1.x, landmark1.y
     x2, y2 = landmark2.x, landmark2.y
     x3, y3 = landmark3.x, landmark3.y
     angle = math.degrees(math.atan2(y3 - y2, x3 - x2) - math.atan2(y1 - y2, x1 - x2))
+    
     if angle < 0:
         angle += 360
     return angle
 
 def generate_framesA():
-    global detection_ongoing
-    cap = cv2.VideoCapture(0)
 
+    cap = cv2.VideoCapture(0)
     if not cap.isOpened():
         print("Error: Could not open camera.")
         return
@@ -29,13 +26,6 @@ def generate_framesA():
     mp_pose_instance = mp_pose.Pose(static_image_mode=False, min_detection_confidence=0.3, model_complexity=2)
 
     while cap.isOpened():
-        with detection_lock:
-            if not detection_ongoing:
-                detection_ongoing = True
-                # Start pose detection in a new thread
-                detection_thread = Thread(target=pose_detection_thread)
-                detection_thread.start()
-
         ret, frame = cap.read()
 
         if not ret:

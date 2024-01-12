@@ -1,11 +1,9 @@
 import cv2
 import mediapipe as mp
-
 from flask_socketio import SocketIO
 from flask import Flask, render_template, Response
-from threading import Thread, Lock
 
-from warrior_I_pose import*
+from warrior_I_pose import generate_framesA
 from warrior_II_pose import generate_framesB
 from downward_facing_dog import generate_frameC
 from chair_pose import generate_framesD
@@ -16,17 +14,8 @@ from half_moon_pose import generate_framesH
 from full_boat_pose import generate_framesI
 from happy_baby_pose import generate_framesJ
 
-
-
 app = Flask(__name__, static_url_path='/static')
 socketio = SocketIO(app)
-
-mp_drawing = mp.solutions.drawing_utils
-detection_lock = Lock()
-detection_ongoing = False
-
-mp_pose = mp.solutions.pose
-pose = mp_pose.Pose(static_image_mode=False, min_detection_confidence=0.3, model_complexity=2)
 
 @app.route('/')
 def index():
@@ -97,7 +86,9 @@ def run_Yolo():
 
 if __name__ == "__main__":
 
-    from gevent import pywsgi
+    app.run(debug=True, host='0.0.0.0', port=5000)
+    
+    # from gevent import pywsgi
 
-    server = pywsgi.WSGIServer(('127.0.0.1',5000),app)
-    server.serve_forever()
+    # server = pywsgi.WSGIServer(('127.0.0.1',5000),app)
+    # server.serve_forever()

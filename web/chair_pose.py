@@ -2,13 +2,8 @@ import math
 import cv2
 import mediapipe as mp
 from mediapipe.python.solutions import pose as mp_pose
-from threading import Thread, Lock
 
 mp_drawing = mp.solutions.drawing_utils
-
-detection_lock = Lock()
-detection_ongoing = False
-
 
 def calculateAngle(landmark1, landmark2, landmark3):
     x1, y1 = landmark1.x, landmark1.y
@@ -22,9 +17,7 @@ def calculateAngle(landmark1, landmark2, landmark3):
 
 
 def generate_framesD():
-    global detection_ongoing
     cap = cv2.VideoCapture(0)
-
     if not cap.isOpened():
         print("Error: Could not open camera.")
         return
@@ -33,13 +26,7 @@ def generate_framesD():
         static_image_mode=False, min_detection_confidence=0.3, model_complexity=2)
 
     while cap.isOpened():
-        with detection_lock:
-            if not detection_ongoing:
-                detection_ongoing = True
-                # Start pose detection in a new thread
-                detection_thread = Thread(target=pose_detection_thread)
-                detection_thread.start()
-
+        
         ret, frame = cap.read()
 
         if not ret:
@@ -49,8 +36,7 @@ def generate_framesD():
         green = (0, 255, 0)
         red = (0, 0, 255)
 
-        landmark_drawing_spec = mp_drawing.DrawingSpec(
-            color=red, thickness=2, circle_radius=2)
+        landmark_drawing_spec = mp_drawing.DrawingSpec(color=red, thickness=2, circle_radius=2)
 
         results = mp_pose_instance.process(frame)
 
@@ -140,22 +126,14 @@ def generate_framesD():
 
             connection_drawing_spec = {}
 
-            connection_drawing_spec[(mp_pose.PoseLandmark.LEFT_SHOULDER.value,
-                                    mp_pose.PoseLandmark.LEFT_ELBOW.value)] = elbow_color
-            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_SHOULDER.value,
-                                    mp_pose.PoseLandmark.RIGHT_ELBOW.value)] = elbow_color
-            connection_drawing_spec[(
-                mp_pose.PoseLandmark.LEFT_ELBOW.value, mp_pose.PoseLandmark.LEFT_WRIST.value)] = hand_color
-            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_ELBOW.value,
-                                    mp_pose.PoseLandmark.RIGHT_WRIST.value)] = hand_color
-            connection_drawing_spec[(
-                mp_pose.PoseLandmark.LEFT_HIP.value, mp_pose.PoseLandmark.LEFT_KNEE.value)] = thigh_color
-            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_HIP.value,
-                                    mp_pose.PoseLandmark.RIGHT_KNEE.value)] = thigh_color
-            connection_drawing_spec[(
-                mp_pose.PoseLandmark.LEFT_KNEE.value, mp_pose.PoseLandmark.LEFT_ANKLE.value)] = calf_color
-            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_KNEE.value,
-                                    mp_pose.PoseLandmark.RIGHT_ANKLE.value)] = calf_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.LEFT_SHOULDER.value, mp_pose.PoseLandmark.LEFT_ELBOW.value)] = elbow_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_SHOULDER.value, mp_pose.PoseLandmark.RIGHT_ELBOW.value)] = elbow_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.LEFT_ELBOW.value, mp_pose.PoseLandmark.LEFT_WRIST.value)] = hand_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_ELBOW.value, mp_pose.PoseLandmark.RIGHT_WRIST.value)] = hand_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.LEFT_HIP.value, mp_pose.PoseLandmark.LEFT_KNEE.value)] = thigh_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_HIP.value, mp_pose.PoseLandmark.RIGHT_KNEE.value)] = thigh_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.LEFT_KNEE.value, mp_pose.PoseLandmark.LEFT_ANKLE.value)] = calf_color
+            connection_drawing_spec[(mp_pose.PoseLandmark.RIGHT_KNEE.value, mp_pose.PoseLandmark.RIGHT_ANKLE.value)] = calf_color
 
             connection_drawing_spec[(6, 8)] = green_drawing_spec
             connection_drawing_spec[(5, 6)] = green_drawing_spec
