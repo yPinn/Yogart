@@ -30,3 +30,10 @@
 // 按 'Q' 關閉鏡頭視窗
 
 // 按 'Ctrl+C' 終止程式碼
+
+// 模型訓練相關：
+
+> pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+
+> import torch
+> torch.cuda.is_available()
